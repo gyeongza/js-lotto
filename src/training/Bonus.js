@@ -8,7 +8,6 @@ class Bonus {
 
   validate(bonus, winningNumbers) {
     this.validateNumber(bonus);
-    this.validateLength(bonus);
     this.validateDuplication(bonus, winningNumbers);
     this.validateRange(bonus);
   }
@@ -16,12 +15,6 @@ class Bonus {
   validateNumber(bonus) {
     if (isNaN(bonus)) {
       throw new Error("[ERROR] 숫자만 입력해주세요.");
-    }
-  }
-
-  validateLength(bonus) {
-    if (bonus.length !== 1) {
-      throw new Error("[ERROR] 숫자의 개수는 1개입니다.");
     }
   }
 
