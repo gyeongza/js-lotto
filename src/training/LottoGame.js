@@ -1,5 +1,5 @@
 const InputView = require("./InputView");
-const Lotto = require("./Lotto");
+const Money = require("./Money");
 
 class LottoGame {
   #money;
@@ -13,6 +13,7 @@ class LottoGame {
   }
 
   handleMoney = (money) => {
+    new Money(money)
     this.#money = money;
   };
 }
