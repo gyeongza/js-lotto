@@ -1,5 +1,6 @@
 const InputView = require("./InputView");
 const Money = require("./Money");
+const OutputView = require("./OutputView");
 
 class LottoGame {
   #quantity;
@@ -14,7 +15,7 @@ class LottoGame {
 
   handleMoney = (money) => {
     this.#quantity = new Money(money).getQuantity();
-    console.log(this.#quantity)
+    OutputView.printQuantity(this.#quantity);
   };
 }
 
