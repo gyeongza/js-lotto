@@ -1,12 +1,15 @@
 const InputView = require("./InputView");
+const LottoMaker = require("./LottoMaker");
 const Money = require("./Money");
 const OutputView = require("./OutputView");
 
 class LottoGame {
   #quantity;
+  #lottos;
 
   constructor() {
     this.#quantity;
+    this.#lottos;
   }
 
   startGame() {
@@ -16,6 +19,8 @@ class LottoGame {
   handleMoney = (money) => {
     this.#quantity = new Money(money).getQuantity();
     OutputView.printQuantity(this.#quantity);
+    this.#lottos = LottoMaker.generate(this.#quantity);
+    OutputView.printLottos(this.#lottos);
   };
 }
 
