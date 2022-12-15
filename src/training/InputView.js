@@ -7,7 +7,11 @@ const InputView = {
 
   askWinningNumbers(callback) {
     Console.readLine("당첨 번호를 입력해 주세요. ", callback);
-  }
+  },
+
+  askBonusNumber(callback) {
+    Console.readLine("보너스 번호를 입력해 주세요. ", callback);
+  },
 };
 
 module.exports = InputView;

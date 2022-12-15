@@ -1,3 +1,4 @@
+const Bonus = require("./Bonus");
 const InputView = require("./InputView");
 const Lotto = require("./Lotto");
 const LottoMaker = require("./LottoMaker");
@@ -8,11 +9,13 @@ class LottoGame {
   #quantity;
   #lottos;
   #winningNumbers;
+  #bonus;
 
   constructor() {
     this.#quantity;
     this.#lottos;
     this.#winningNumbers;
+    this.#bonus;
   }
 
   startGame() {
@@ -36,7 +39,18 @@ class LottoGame {
       .split(",")
       .map((number) => parseInt(number, 10));
     new Lotto(this.#winningNumbers)
+
+    this.getBonus()
   };
+
+  getBonus() {
+    InputView.askBonusNumber(this.handleBonusNumber)
+  }
+
+  handleBonusNumber = (bonus) => {
+    new Bonus(bonus, this.#winningNumbers)
+    this.#bonus = bonus;
+  }
 }
 
 module.exports = LottoGame;
