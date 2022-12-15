@@ -2,10 +2,10 @@ const InputView = require("./InputView");
 const Money = require("./Money");
 
 class LottoGame {
-  #money;
+  #quantity;
 
   constructor() {
-    this.#money;
+    this.#quantity;
   }
 
   startGame() {
@@ -13,8 +13,8 @@ class LottoGame {
   }
 
   handleMoney = (money) => {
-    new Money(money)
-    this.#money = money;
+    this.#quantity = new Money(money).getQuantity();
+    console.log(this.#quantity)
   };
 }
 
