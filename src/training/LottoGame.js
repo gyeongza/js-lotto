@@ -1,4 +1,5 @@
 const Bonus = require("./Bonus");
+const Compare = require("./Compare");
 const InputView = require("./InputView");
 const Lotto = require("./Lotto");
 const LottoMaker = require("./LottoMaker");
@@ -38,18 +39,23 @@ class LottoGame {
     this.#winningNumbers = numbers
       .split(",")
       .map((number) => parseInt(number, 10));
-    new Lotto(this.#winningNumbers)
+    new Lotto(this.#winningNumbers);
 
-    this.getBonus()
+    this.getBonus();
   };
 
   getBonus() {
-    InputView.askBonusNumber(this.handleBonusNumber)
+    InputView.askBonusNumber(this.handleBonusNumber);
   }
 
   handleBonusNumber = (bonus) => {
-    new Bonus(bonus, this.#winningNumbers)
+    new Bonus(bonus, this.#winningNumbers);
     this.#bonus = bonus;
+    this.compare();
+  };
+
+  compare() {
+    new Compare(this.#lottos, this.#winningNumbers, this.#bonus);
   }
 }
 
